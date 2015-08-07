@@ -9,7 +9,7 @@
             <property name="list" expression="json-eval($.list)" />
             <property name="data" expression="json-eval($.data)" />
             <property name="email" expression="json-eval($.email)" />
-          
+
 
             <sendgrid.init>
                 <apiUrl>{$ctx:apiUrl}</apiUrl>
@@ -18,14 +18,14 @@
             </sendgrid.init>
 
             <switch source="get-property('transport','Action')">
-                <case regex="urn:createClient">
+                <case regex="urn:addemail">
                     <sendgrid.addemail>
                         <list>{$ctx:list}</list>
                         <data>{$ctx:data}</data>
                     </sendgrid.addemail>
                 </case>
 
-                <case regex="urn:createClient">
+                <case regex="urn:getemail">
                     <sendgrid.getemail>
                         <list>{$ctx:list}</list>
 
