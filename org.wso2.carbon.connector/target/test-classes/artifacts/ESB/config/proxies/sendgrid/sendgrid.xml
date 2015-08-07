@@ -9,6 +9,7 @@
             <property name="list" expression="json-eval($.list)" />
             <property name="data" expression="json-eval($.data)" />
             <property name="email" expression="json-eval($.email)" />
+            <property name="unsubscribed" expression="json-eval($.unsubscribed)" />
 
 
             <sendgrid.init>
@@ -28,7 +29,8 @@
                 <case regex="urn:getemail">
                     <sendgrid.getemail>
                         <list>{$ctx:list}</list>
-
+                        <email>{$ctx:email}</email>
+                        <unsubscribed>{$ctx:unsubscribed}</unsubscribed>
                     </sendgrid.getemail>
                 </case>
 

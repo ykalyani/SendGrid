@@ -59,8 +59,8 @@
 
         <call>
             <endpoint>
-                <!--<http method="get" uri-template="{uri.var.apiUrl}/coupons{+uri.var.apiParameters}" />-->
-                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?list={uri.var.list}&api_user={uri.var.api_user}&api_key={uri.var.api_key}" />
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json" />
+                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?list={+uri.var.list}&api_user={+uri.var.api_user}&api_key={+uri.var.api_key}" />-->
             </endpoint>
         </call>
 
