@@ -26,40 +26,45 @@
 
         <script language="js">
             <![CDATA[
-				var email = mc.getProperty('uri.var.email');
-				var unsubscribed = mc.getProperty('uri.var.unsubscribed');
-				
-                var query="";
-                var added=0;
-                if (email != null && email != ""){
-                    var ids=email.split(',');
-                    for(var i = 0; i < ids.length; i++){
-                        query+='id='+ids[i]+'&amp;';
-                    }
-                }
+            var jsonPayload = mc.getPayloadJSON();
+            var email = mc.getProperty('uri.var.email');
+            var unsubscribed = mc.getProperty('uri.var.unsubscribed');
 
-                if (unsubscribed != null && unsubscribed != ""){
-                    var nameLists=unsubscribed.split(',');
-                    for(var i = 0; i < nameLists.length; i++){
-                        var name=nameLists[i];
-                        query+='name='+name+'&amp;';
-                    }
-                }
+            if (email != null && email != ""){
+               jsonPayload.client.email = email;
+            }
+            if (unsubscribed != null && unsubscribed != ""){
+               jsonPayload.client.unsubscribed = unsubscribed;
+            }
 
-
-			]]>
+            mc.setPayloadJSON(jsonPayload);
+         ]]>
         </script>
 
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
         
-        <call>
+        <!--<call>
             <endpoint>
-                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/{uri.var.list}.json" />   
+                &lt;!&ndash;<http method="get" uri-template="{uri.var.apiUrl}/lists/email/{uri.var.get}.json?list=list&api_user=api_user&api_key=api_key" />&ndash;&gt;
+                &lt;!&ndash;<http method="get" uri-template="{uri.var.apiUrl}/lists/email/{uri.var.get}.json?list={uri.var.list}&api_user={uri.var.api_user}&api_key={uri.var.api_key}" />&ndash;&gt;
 
-                <!--<http method="get" uri-template="https://api.sendgrid.com/api/newsletter/{uri.var.list}/email/get.json" />-->
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?list={+uri.var.list}&api_user={+uri.var.api_user}&api_key={+uri.var.api_key}" />
+                <http method="get" uri-template="{uri.var.apiUrl}/clients/{uri.var.clientId}" />
+                &lt;!&ndash;https://api.sendgrid.com/api/newsletter/lists/email/get.json?list=Test&api_user=your_sendgrid_username&api_key=your_sendgrid_password&ndash;&gt;
+                &lt;!&ndash;<http method="get" uri-template="https://api.sendgrid.com/api/newsletter/{uri.var.list}/email/get.json" />&ndash;&gt;
 
             </endpoint>
+        </call>-->
+
+
+        <call>
+            <endpoint>
+                <!--<http method="get" uri-template="{uri.var.apiUrl}/coupons{+uri.var.apiParameters}" />-->
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?list={uri.var.list}&api_user={uri.var.api_user}&api_key={uri.var.api_key}" />
+            </endpoint>
         </call>
+
+
         <!-- Remove custom Headers from the API Response -->
         <header name="X-Runtime" action="remove" scope="transport" />
         <header name="ETag" action="remove" scope="transport" />
