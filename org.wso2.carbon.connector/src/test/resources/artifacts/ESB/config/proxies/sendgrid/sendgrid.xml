@@ -28,7 +28,8 @@
                 <case regex="urn:getemail">
                     <sendgrid.getemail>
                         <list>{$ctx:list}</list>
-
+                        <email>{$ctx:list}</email>
+                        <unsubscribed>{$ctx:list}</unsubscribed>
                     </sendgrid.getemail>
                 </case>
 
