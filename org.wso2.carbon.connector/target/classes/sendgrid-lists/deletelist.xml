@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="deletelist" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="list" description="Remove this Recipient List.." />
+    <sequence>
+        
+        <property name="messageType" value="application/json" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="delete" uri-template="{uri.var.apiUrl}/lists/delete.json?list={+uri.var.list}" />
+                <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}" />-->
+                <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}/>-->
+            </endpoint>
+        </call>
+    </sequence>
+</template>

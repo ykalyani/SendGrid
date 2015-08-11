@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="sendgrid-lists" type="synapse/template" >
+    <subComponents>
+        <component name="addlist">
+            <file>addlist.xml</file>
+            <description>Add one or more emails to a Recipient List.</description>
+        </component>
+
+        <component name="getlist">
+            <file>getlist.xml</file>
+            <description>List all Recipient Lists on your account, or check if a particular List exists.</description>
+        </component>
+
+    </subComponents>
+</component>

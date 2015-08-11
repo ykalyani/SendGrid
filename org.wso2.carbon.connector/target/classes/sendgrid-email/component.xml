@@ -24,15 +24,15 @@
         </component>
         <component name="getemail">
             <file>getemail.xml</file>
-            <description>Get the email addresses and associated fields for a Recipient List..</description>
+            <description>Get the email addresses and associated fields for a Recipient List.</description>
         </component>
-     <!--   <component name="countemail">
+        <component name="countemail">
             <file>countemail.xml</file>
-            <description>Retrieve the number of entries on a list..</description>
+            <description>Retrieve the number of entries on a list.</description>
         </component>
         <component name="deleteemail">
             <file>deleteemail.xml</file>
-            <description>Remove one or more emails from a Recipient List..</description>
-        </component>-->
+            <description>Remove one or more emails from a Recipient List.</description>
+        </component>
     </subComponents>
 </component>

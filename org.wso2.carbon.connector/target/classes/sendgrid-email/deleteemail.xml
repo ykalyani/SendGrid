@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template name="deleteemail" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="list" description="The list which you are adding email addresses too."/>
-    <parameter name="email[]" description="Specify the email address or email addresses you wish to remove from the specified Recipient List. May list multiple addresses with multiple email[] parameters"/>
+    <parameter name="email" description="Specify the email address or email addresses you wish to remove from the specified Recipient List. May list multiple addresses with multiple email[] parameters"/>
     <sequence>
         <property name="uri.var.list" expression="$func:list"/>
-        <property name="uri.var.email[]" expression="$func:email[]"/>
+        <property name="uri.var.email" expression="$func:email"/>
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
+        <call>
+            <endpoint>
+                <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/email/delete.json?list={uri.var.list}&amp;email[]={uri.var.email}"/>-->
+                <http method="delete" uri-template="{uri.var.apiUrl}/lists/email/delete.json?list={+uri.var.list}&amp;email[]={+uri.var.email}"/>
+            </endpoint>
+        </call>
 
-
-        <class name="org.wso2.carbon.connector.SendGrid.emails.deleteemail"/>
     </sequence>
 </template>

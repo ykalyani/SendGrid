@@ -1,43 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <template name="addemail" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="api_user" description="The name of your SendGrid Username." />
-    <parameter name="api_key" description="The name of your SendGrid Password." />
     <parameter name="list" description="The list which you are adding email addresses to." />
     <parameter name="data" description="Specify the name, email address, and additional fields to add to the specified Recipient List." />
     <sequence>
-        <property name="uri.var.api_user" expression="$func:api_user" />
-        <property name="uri.var.api_key" expression="$func:api_key" />
         <property name="uri.var.list" expression="$func:list" />
         <property name="uri.var.data" expression="$func:data" />
         <payloadFactory media-type="json">
             <format>
                 {
-                "email": {
                 "list": "$1",
-                "data":"$2"
-                }
+                "data":[
+                "email":"$2",
+                "name":"$3"
+                ]
                 }
             </format>
 
             <args>
                 <arg expression="get-property('uri.var.list')" />
-                <arg expression="get-property('uri.var.list')" />
+                <arg expression="get-property('uri.var.data')" />
             </args>
         </payloadFactory>
-
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>
         <endpoint>
-            <http method="post" uri-template="{uri.var.apiUrl}/lists/emails" />
+            <http method="add" uri-template="{uri.var.apiUrl}/lists/email/add.json" />
+            <!--<http method="add" uri-template="{uri.var.apiUrl}/lists/email/add.json?list={+uri.var.list}&amp;data={+uri.var.data}" />-->
         </endpoint>
         </call>
-        <!-- Remove custom Headers from the API Response -->
-        <header name="X-Runtime" action="remove" scope="transport" />
-        <header name="ETag" action="remove" scope="transport" />
-        <header name="X-UA-Compatible" action="remove" scope="transport" />
-        <header name="X-Request-Id" action="remove" scope="transport" />
-        <header name="X-Rack-Cache" action="remove" scope="transport" />
-        <header name="X-Powered-By" action="remove" scope="transport" />
     </sequence>
 </template>

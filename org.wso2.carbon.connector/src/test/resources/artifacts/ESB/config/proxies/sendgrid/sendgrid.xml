@@ -34,6 +34,32 @@
                     </sendgrid.getemail>
                 </case>
 
+                <case regex="urn:deleteemail">
+                    <sendgrid.deleteemail>
+                        <list>{$ctx:list}</list>
+                        <email>{$ctx:email}</email>
+                    </sendgrid.deleteemail>
+                </case>
+
+                <case regex="urn:countemail">
+                    <sendgrid.countemail>
+                        <list>{$ctx:list}</list>
+                    </sendgrid.countemail>
+                </case>
+
+                <case regex="urn:addlist">
+                    <sendgrid.addlist>
+                        <list>{$ctx:list}</list>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.addlist>
+                </case>
+
+                <case regex="urn:getlist">
+                    <sendgrid.getlist>
+                        <list>{$ctx:list}</list>
+                    </sendgrid.getlist>
+                </case>
+
             </switch>
 
             <respond />

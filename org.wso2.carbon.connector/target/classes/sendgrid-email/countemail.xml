@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="countemail" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="list" description="The list which you are adding email addresses too."/>
+   <sequence>
+        <property name="uri.var.list" expression="$func:list"/>
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <!--<http method="count" uri-template="{uri.var.apiUrl}/lists/email/count.json?list={uri.var.list}"/>-->
+                <http method="count" uri-template="{uri.var.apiUrl}/lists/email/count.json?list={+uri.var.list}"/>
+            </endpoint>
+        </call>
+
+    </sequence>
+</template>

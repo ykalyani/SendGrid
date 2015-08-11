@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="getlist" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="list" description="Check for this particular list." />
+    <sequence>
+        <!--<property name="uri.var.list" expression="$func:list" />-->
+
+        <script language="js">
+            <![CDATA[
+            var jsonPayload = mc.getPayloadJSON();
+            var list = mc.getProperty('uri.var.list');
+
+            if (list != null && list != ""){
+               jsonPayload.client.list = list;
+            }
+
+            mc.setPayloadJSON(jsonPayload);
+         ]]>
+        </script>
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/get.json" />
+                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}" />-->
+                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}&api_user={+uri.var.api_user}&api_key={+uri.var.api_key}" />-->
+            </endpoint>
+        </call>
+    </sequence>
+</template>
