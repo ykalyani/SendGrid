@@ -7,6 +7,7 @@
             <property name="api_user" expression="json-eval($.api_user)" />
             <property name="api_key" expression="json-eval($.api_key)" />
             <property name="list" expression="json-eval($.list)" />
+            <property name="newlist" expression="json-eval($.newlist)" />
             <property name="data" expression="json-eval($.data)" />
             <property name="email" expression="json-eval($.email)" />
             <property name="unsubscribed" expression="json-eval($.unsubscribed)" />
@@ -58,6 +59,19 @@
                     <sendgrid.getlist>
                         <list>{$ctx:list}</list>
                     </sendgrid.getlist>
+                </case>
+
+                <case regex="urn:deletelist">
+                    <sendgrid.deletelist>
+                        <list>{$ctx:list}</list>
+                    </sendgrid.deletelist>
+                </case>
+
+                <case regex="urn:editlist">
+                    <sendgrid.editlist>
+                        <list>{$ctx:list}</list>
+                        <newlist>{$ctx:newlist}</newlist>
+                    </sendgrid.editlist>
                 </case>
 
             </switch>

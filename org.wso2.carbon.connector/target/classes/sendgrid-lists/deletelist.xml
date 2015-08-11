@@ -3,7 +3,7 @@
 <template name="deletelist" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="list" description="Remove this Recipient List.." />
     <sequence>
-        
+        <property name="uri.var.list" expression="$func:list" />
         <property name="messageType" value="application/json" scope="axis2" />
 
         <call>

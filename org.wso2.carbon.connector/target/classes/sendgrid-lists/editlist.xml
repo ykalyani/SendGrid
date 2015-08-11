@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="editlist" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="list" description="This is the name of the Recipient List to be renamed." />
+    <parameter name="newlist" description="Specify the new name for the Recipient List. " />
+    <sequence>
+
+        <property name="messageType" value="application/json" scope="axis2" />
+        <property name="uri.var.list" expression="$func:list" />
+        <property name="uri.var.newlist" expression="$func:newlist" />
+
+        <call>
+            <endpoint>
+                <http method="edit" uri-template="{uri.var.apiUrl}/lists/edit.json" />
+                <!--<http method="edit" uri-template="{uri.var.apiUrl}/lists/edit.json?list={+uri.var.list}&amp;newlist={+uri.var.newlist}" />-->
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>
