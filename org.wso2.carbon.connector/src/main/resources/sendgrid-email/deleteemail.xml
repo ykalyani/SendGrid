@@ -10,7 +10,8 @@
         <call>
             <endpoint>
                 <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/email/delete.json?list={uri.var.list}&amp;email[]={uri.var.email}"/>-->
-                <http method="delete" uri-template="{uri.var.apiUrl}/lists/email/delete.json?list={+uri.var.list}&amp;email[]={+uri.var.email}"/>
+                <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/email/delete.json?list={+uri.var.list}&amp;email[]={+uri.var.email}"/>-->
+                <http method="post" uri-template="{uri.var.apiUrl}/lists/email/delete.json"/>
             </endpoint>
         </call>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<template name="addlists" xmlns="http://ws.apache.org/ns/synapse">
+<template name="addlist" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="list" description="Create a Recipient List with this name.." />
     <parameter name="name" description="Specify the column name for the name associated with email addresses.." />
     <sequence>
@@ -8,7 +8,7 @@
         <property name="uri.var.name" expression="$func:name" />
 
 
-        <payloadFactory media-type="json">
+      <!--  <payloadFactory media-type="json">
             <format>
                 {
                 "list": "$1",
@@ -20,7 +20,7 @@
                 <arg expression="get-property('uri.var.list')" />
                 <arg expression="get-property('uri.var.name')" />
             </args>
-        </payloadFactory>
+        </payloadFactory>-->
 
         <script language="js">
             <![CDATA[
@@ -36,11 +36,13 @@
         </script>
 
 
-        <property name="messageType" value="application/json" scope="axis2" />
+        <!--<property name="messageType" value="application/json" scope="axis2" />-->
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>
             <endpoint>
-                <http method="add" uri-template="{uri.var.apiUrl}/lists/add.jsonlist={+uri.var.list}" />
+                <http method="add" uri-template="{uri.var.apiUrl}/lists/add.json" />
+                <!--<http method="add" uri-template="{uri.var.apiUrl}/lists/add.jsonlist={+uri.var.list}" />-->
                 <!--<http method="add" uri-template="{uri.var.apiUrl}/lists/add.json?list={+uri.var.list}&amp;name={+uri.var.name}" />-->
             </endpoint>
         </call>

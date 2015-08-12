@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="addrecipient" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="list" description="The name of the list to assign to the marketing email." />
+    <parameter name="name" description="The name of the marketing email." />
+    <sequence>
+        <property name="uri.var.list" expression="$func:list" />
+        <property name="uri.var.name" expression="$func:name" />
+
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="add" uri-template="{uri.var.apiUrl}/recipients/add.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="createcategory" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="category" description="The name that will be used for the Category being created." />
+    <sequence>
+        <property name="uri.var.category" expression="$func:category" />
+
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="post" uri-template="{uri.var.apiUrl}/category/create.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>

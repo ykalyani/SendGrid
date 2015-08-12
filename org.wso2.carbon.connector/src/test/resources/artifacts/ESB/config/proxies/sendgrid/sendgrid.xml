@@ -11,6 +11,8 @@
             <property name="data" expression="json-eval($.data)" />
             <property name="email" expression="json-eval($.email)" />
             <property name="unsubscribed" expression="json-eval($.unsubscribed)" />
+            <property name="name" expression="json-eval($.name)" />
+            <property name="category" expression="json-eval($.category)" />
 
 
             <sendgrid.init>
@@ -74,6 +76,53 @@
                     </sendgrid.editlist>
                 </case>
 
+                <case regex="urn:createcategory">
+                    <sendgrid.createcategory>
+                        <category>{$ctx:category}</category>
+                    </sendgrid.createcategory>
+                </case>
+
+                <case regex="urn:addcategory">
+                    <sendgrid.addcategory>
+                        <category>{$ctx:category}</category>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.addcategory>
+                </case>
+
+                <case regex="urn:removecategory">
+                    <sendgrid.removecategory>
+                        <name>{$ctx:name}</name>
+                        <category>{$ctx:category}</category>
+                    </sendgrid.removecategory>
+                </case>
+
+                <case regex="urn:listcategory">
+                    <sendgrid.listcategory>
+                        <category>{$ctx:category}</category>
+                    </sendgrid.listcategory>
+                </case>
+                addrecipient
+
+                <case regex="urn:addrecipient">
+                    <sendgrid.addrecipient>
+                        <list>{$ctx:list}</list>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.addrecipient>
+                </case>
+
+                <case regex="urn:getrecipient">
+                    <sendgrid.getrecipient>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.getrecipient>
+                </case>
+
+                <case regex="urn:deleterecipient">
+                    <sendgrid.deleterecipient>
+                        <name>{$ctx:name}</name>
+                        <list>{$ctx:list}</list>
+                    </sendgrid.deleterecipient>
+                </case>
+
             </switch>
 
             <respond />
@@ -85,4 +134,3 @@
     </target>
     <description />
 </proxy>
-                                

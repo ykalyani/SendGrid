@@ -6,22 +6,7 @@
     <sequence>
         <property name="uri.var.list" expression="$func:list" />
         <property name="uri.var.data" expression="$func:data" />
-        <payloadFactory media-type="json">
-            <format>
-                {
-                "list": "$1",
-                "data":[
-                "email":"$2",
-                "name":"$3"
-                ]
-                }
-            </format>
 
-            <args>
-                <arg expression="get-property('uri.var.list')" />
-                <arg expression="get-property('uri.var.data')" />
-            </args>
-        </payloadFactory>
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>

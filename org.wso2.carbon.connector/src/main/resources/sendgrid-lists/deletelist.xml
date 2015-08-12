@@ -4,11 +4,12 @@
     <parameter name="list" description="Remove this Recipient List.." />
     <sequence>
         <property name="uri.var.list" expression="$func:list" />
-        <property name="messageType" value="application/json" scope="axis2" />
+        <!--<property name="messageType" value="application/json" scope="axis2" />-->
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>
             <endpoint>
-                <http method="delete" uri-template="{uri.var.apiUrl}/lists/delete.json?list={+uri.var.list}" />
+                <http method="post" uri-template="{uri.var.apiUrl}/lists/delete.json" />
                 <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}" />-->
                 <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}/>-->
             </endpoint>

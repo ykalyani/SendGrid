@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="sendgrid-category" type="synapse/template">
+<subComponents>
+    <component name="createcategory">
+        <file>createcategory.xml</file>
+        <description>Create a new Category.</description>
+    </component>
+
+    <component name="addcategory">
+        <file>addcategory.xml</file>
+        <description>Assign a Category to an existing Marketing Email.</description>
+    </component>
+
+    <component name="removecategory">
+        <file>removecategory.xml</file>
+        <description>Remove specific categories, or all categories from a Marketing Email.</description>
+    </component>
+
+    <component name="listcategory">
+        <file>listcategory.xml</file>
+        <description>List all categories.</description>
+    </component>
+
+</subComponents>
+</component>

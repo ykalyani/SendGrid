@@ -5,7 +5,9 @@
     <parameter name="newlist" description="Specify the new name for the Recipient List. " />
     <sequence>
 
-        <property name="messageType" value="application/json" scope="axis2" />
+        <!--<property name="messageType" value="application/json" scope="axis2" />-->
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
         <property name="uri.var.list" expression="$func:list" />
         <property name="uri.var.newlist" expression="$func:newlist" />
 
