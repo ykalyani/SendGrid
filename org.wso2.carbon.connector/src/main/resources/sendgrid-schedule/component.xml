@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="sendgrid-schedule" type="synapse/template">
+    <subComponents>
+        <component name="addschedule">
+            <file>addschedule.xml</file>
+            <description>Schedule a delivery time for an existing Marketing Email.</description>
+        </component>
+
+        <component name="getschedule">
+            <file>getschedule.xml</file>
+            <description>Retrieve the scheduled delivery time for an existing Marketing Email.</description>
+        </component>
+
+        <component name="deleteschedule">
+            <file>deleteschedule.xml</file>
+            <description>Cancel a scheduled send for a Marketing Email.</description>
+        </component>
+
+    </subComponents>
+</component>

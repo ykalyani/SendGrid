@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="getschedule" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="name" description="Retrieve the delivery time scheduled for this Marketing Email." />
+    <sequence>
+        <property name="uri.var.name" expression="$func:name" />
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="get" uri-template="{uri.var.apiUrl}/schedule/get.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>

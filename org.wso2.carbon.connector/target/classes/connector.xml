@@ -7,6 +7,8 @@
         <dependency component="sendgrid-lists"/>
         <dependency component="sendgrid-category"/>
         <dependency component="sendgrid-recipients"/>
+        <dependency component="sendgrid-schedule"/>
+        <dependency component="sendgrid-senderaddress"/>
         <description>wso2 sample connector library for sendgrid</description>
     </component>
 </connector>

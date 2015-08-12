@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="getsenderaddress" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="identity" description="Retrieve contents of the specified Address." />
+    <sequence>
+        <property name="uri.var.identity" expression="$func:identity" />
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="get" uri-template="{uri.var.apiUrl}/identity/get.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>

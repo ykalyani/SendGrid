@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="editsenderaddress" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="identity" description="The Address you wish to edit." />
+    <parameter name="newidentity" description="Specify the new name to be used for this Address." />
+    <parameter name="name" description=" Specify the new name to be used for this Address." />
+    <parameter name="email" description="Specify the email address to be used for this Address." />
+    <parameter name="replyto" description="Specify an email address to be used in the Reply-To field. If not defined, will default to the email parameter." />
+    <parameter name="address" description="Specify the new physical address to be used for this Address." />
+       <sequence>
+        <property name="uri.var.identity" expression="$func:identity" />
+        <property name="uri.var.newidentity" expression="$func:newidentity" />
+        <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.email" expression="$func:email" />
+        <property name="uri.var.replyto" expression="$func:replyto" />
+        <property name="uri.var.address" expression="$func:address" />
+
+        <script language="js">
+            <![CDATA[
+            var jsonPayload = mc.getPayloadJSON();
+            var newidentity = mc.getProperty('uri.var.newidentity');
+            var name = mc.getProperty('uri.var.name');
+            var replyto = mc.getProperty('uri.var.replyto');
+            var address = mc.getProperty('uri.var.address');
+
+            if (newidentity != null && newidentity != ""){
+               jsonPayload.client.newidentity = newidentity;
+            }
+             if (name != null && name != ""){
+               jsonPayload.client.name = name;
+            }
+
+             if (replyto != null && replyto != ""){
+               jsonPayload.client.replyto = replyto;
+            }
+
+               if (address != null && address != ""){
+               jsonPayload.client.address = address;
+            }
+
+            mc.setPayloadJSON(jsonPayload);
+         ]]>
+        </script>
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="edit" uri-template="{uri.var.apiUrl}/identity/edit.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>

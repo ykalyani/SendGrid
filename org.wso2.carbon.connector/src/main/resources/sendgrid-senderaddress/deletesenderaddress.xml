@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="deletesenderaddress" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="identity" description="Remove the specified Address from your account." />
+    <sequence>
+        <property name="uri.var.identity" expression="$func:identity" />
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="post" uri-template="{uri.var.apiUrl}/identity/delete.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>

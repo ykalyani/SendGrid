@@ -13,6 +13,15 @@
             <property name="unsubscribed" expression="json-eval($.unsubscribed)" />
             <property name="name" expression="json-eval($.name)" />
             <property name="category" expression="json-eval($.category)" />
+            <property name="at" expression="json-eval($.at)" />
+            <property name="after" expression="json-eval($.after)" />
+            <property name="identity" expression="json-eval($.identity)" />
+            <property name="newidentity" expression="json-eval($.newidentity)" />
+            <property name="replyto" expression="json-eval($.replyto)" />
+            <property name="city" expression="json-eval($.city)" />
+            <property name="state" expression="json-eval($.state)" />
+            <property name="zip" expression="json-eval($.zip)" />
+            <property name="country" expression="json-eval($.country)" />
 
 
             <sendgrid.init>
@@ -121,6 +130,69 @@
                         <name>{$ctx:name}</name>
                         <list>{$ctx:list}</list>
                     </sendgrid.deleterecipient>
+                </case>
+
+                <case regex="urn:addschedule">
+                    <sendgrid.addschedule>
+                        <name>{$ctx:name}</name>
+                        <at>{$ctx:at}</at>
+                        <after>{$ctx:after}</after>
+                    </sendgrid.addschedule>
+                </case>
+
+                <case regex="urn:getschedule">
+                    <sendgrid.getschedule>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.getschedule>
+                </case>
+
+                <case regex="urn:deleteschedule">
+                    <sendgrid.deleteschedule>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.deleteschedule>
+                </case>
+
+                <case regex="urn:addsenderaddress">
+                    <sendgrid.addsenderaddress>
+                        <identity>{$ctx:identity}</identity>
+                        <name>{$ctx:name}</name>
+                        <email>{$ctx:email}</email>
+                        <replyto>{$ctx:replyto}</replyto>
+                        <address>{$ctx:address}</address>
+                        <city>{$ctx:city}</city>
+                        <state>{$ctx:state}</state>
+                        <zip>{$ctx:zip}</zip>
+                        <country>{$ctx:country}</country>
+                    </sendgrid.addsenderaddress>
+                </case>
+
+                <case regex="urn:editsenderaddress">
+                    <sendgrid.editsenderaddress>
+                        <identity>{$ctx:identity}</identity>
+                        <newidentity>{$ctx:newidentity}</newidentity>
+                        <name>{$ctx:name}</name>
+                        <email>{$ctx:email}</email>
+                        <replyto>{$ctx:replyto}</replyto>
+                        <address>{$ctx:address}</address>
+                    </sendgrid.editsenderaddress>
+                </case>
+
+                <case regex="urn:getsenderaddress">
+                    <sendgrid.getsenderaddress>
+                        <identity>{$ctx:identity}</identity>
+                    </sendgrid.getsenderaddress>
+                </case>
+
+                <case regex="urn:listsenderaddress">
+                    <sendgrid.listsenderaddress>
+                        <identity>{$ctx:identity}</identity>
+                    </sendgrid.listsenderaddress>
+                </case>
+
+                <case regex="urn:deletesenderaddress">
+                    <sendgrid.deletesenderaddress>
+                        <identity>{$ctx:identity}</identity>
+                    </sendgrid.deletesenderaddress>
                 </case>
 
             </switch>

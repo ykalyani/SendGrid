@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="deleteschedule" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="name" description="Remove the scheduled delivery time from an existing Marketing Email." />
+    <sequence>
+        <property name="uri.var.name" expression="$func:name" />
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="post" uri-template="{uri.var.apiUrl}/schedule/delete.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>

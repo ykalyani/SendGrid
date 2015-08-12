@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="addschedule" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="name" description="Marketing Email to schedule delivery for. (If Marketing Email should be sent now, include no additional parameters.)" />
+    <parameter name="at" description="Date / Time to schedule marketing email Delivery." />
+    <parameter name="after" description="Number of minutes until delivery should occur." />
+    <sequence>
+        <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.at" expression="$func:at" />
+        <property name="uri.var.after" expression="$func:after" />
+
+        <script language="js">
+            <![CDATA[
+            var jsonPayload = mc.getPayloadJSON();
+            var at = mc.getProperty('uri.var.at');
+            var after = mc.getProperty('uri.var.after');
+
+            if (at != null && at != ""){
+               jsonPayload.client.at = at;
+            }
+             if (after != null && after != ""){
+               jsonPayload.client.after = after;
+            }
+
+            mc.setPayloadJSON(jsonPayload);
+         ]]>
+        </script>
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="add" uri-template="{uri.var.apiUrl}/schedule/add.json" />
+
+            </endpoint>
+        </call>
+    </sequence>
+</template>
