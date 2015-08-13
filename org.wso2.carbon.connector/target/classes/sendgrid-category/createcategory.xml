@@ -5,7 +5,6 @@
     <sequence>
         <property name="uri.var.category" expression="$func:category" />
 
-
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>

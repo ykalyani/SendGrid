@@ -18,34 +18,41 @@
 ~ under the License.
 -->
 
-<template name="addlist" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="list" description="Create a Recipient List with this name.." />
-    <parameter name="name" description="Specify the column name for the name associated with email addresses.." />
+<template name="editmarketingemail" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="identity" description="The Identity (Sender Address) that will be used for the Marketing Email being created." />
+    <parameter name="name" description="The name that will be used for the Marketing Email." />
+    <parameter name="newname" description="The new name that will be used for the Marketing Email." />
+    <parameter name="subject" description="The subject that will be used for the Marketing Email." />
+    <parameter name="text" description="The text portion of the Marketing Email." />
+    <parameter name="html" description="The html portion of the Marketing Email." />
+
     <sequence>
-        <property name="uri.var.list" expression="$func:list" />
+        <property name="uri.var.identity" expression="$func:identity" />
+        <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.subject" expression="$func:subject" />
+        <property name="uri.var.replyto" expression="$func:replyto" />
+        <property name="uri.var.text" expression="$func:text" />
+        <property name="uri.var.html" expression="$func:html" />
 
         <script language="js">
             <![CDATA[
             var jsonPayload = mc.getPayloadJSON();
-            var name = mc.getProperty('uri.var.name');
+            var newname = mc.getProperty('uri.var.newname');
 
-            if (name != null && name != ""){
-               jsonPayload.client.name = name;
+            if (newname != null && newname != ""){
+               jsonPayload.client.newname = newname;
             }
 
             mc.setPayloadJSON(jsonPayload);
          ]]>
         </script>
 
-
-        <!--<property name="messageType" value="application/json" scope="axis2" />-->
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>
             <endpoint>
-                <http method="add" uri-template="{uri.var.apiUrl}/lists/add.json" />
-                <!--<http method="add" uri-template="{uri.var.apiUrl}/lists/add.jsonlist={+uri.var.list}" />-->
-                <!--<http method="add" uri-template="{uri.var.apiUrl}/lists/add.json?list={+uri.var.list}&amp;name={+uri.var.name}" />-->
+                <http method="edit" uri-template="{uri.var.apiUrl}/edit.json" />
+
             </endpoint>
         </call>
 

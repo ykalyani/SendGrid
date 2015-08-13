@@ -14,5 +14,14 @@
                 <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}/>-->
             </endpoint>
         </call>
+
+        <!-- Remove custom Headers from the API Response -->
+        <header name="X-Runtime" action="remove" scope="transport" />
+        <header name="ETag" action="remove" scope="transport" />
+        <header name="X-UA-Compatible" action="remove" scope="transport" />
+        <header name="X-Request-Id" action="remove" scope="transport" />
+        <header name="X-Rack-Cache" action="remove" scope="transport" />
+        <header name="X-Powered-By" action="remove" scope="transport" />
+
     </sequence>
 </template>

@@ -18,34 +18,18 @@
 ~ under the License.
 -->
 
-<template name="addlist" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="list" description="Create a Recipient List with this name.." />
-    <parameter name="name" description="Specify the column name for the name associated with email addresses.." />
+<template name="deletemarketingemail" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="name" description="Remove the Marketing Email with this name." />
+
     <sequence>
-        <property name="uri.var.list" expression="$func:list" />
+        <property name="uri.var.name" expression="$func:name" />
 
-        <script language="js">
-            <![CDATA[
-            var jsonPayload = mc.getPayloadJSON();
-            var name = mc.getProperty('uri.var.name');
-
-            if (name != null && name != ""){
-               jsonPayload.client.name = name;
-            }
-
-            mc.setPayloadJSON(jsonPayload);
-         ]]>
-        </script>
-
-
-        <!--<property name="messageType" value="application/json" scope="axis2" />-->
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>
             <endpoint>
-                <http method="add" uri-template="{uri.var.apiUrl}/lists/add.json" />
-                <!--<http method="add" uri-template="{uri.var.apiUrl}/lists/add.jsonlist={+uri.var.list}" />-->
-                <!--<http method="add" uri-template="{uri.var.apiUrl}/lists/add.json?list={+uri.var.list}&amp;name={+uri.var.name}" />-->
+                <http method="post" uri-template="{uri.var.apiUrl}/delete.json" />
+
             </endpoint>
         </call>
 

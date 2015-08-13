@@ -22,6 +22,10 @@
             <property name="state" expression="json-eval($.state)" />
             <property name="zip" expression="json-eval($.zip)" />
             <property name="country" expression="json-eval($.country)" />
+            <property name="subject" expression="json-eval($.subject)" />
+            <property name="text" expression="json-eval($.text)" />
+            <property name="html" expression="json-eval($.html)" />
+            <property name="newname" expression="json-eval($.newname)" />
 
 
             <sendgrid.init>
@@ -35,6 +39,8 @@
                     <sendgrid.addemail>
                         <list>{$ctx:list}</list>
                         <data>{$ctx:data}</data>
+                        <email>{$ctx:email}</email>
+                        <name>{$ctx:name}</name>
                     </sendgrid.addemail>
                 </case>
 
@@ -193,6 +199,45 @@
                     <sendgrid.deletesenderaddress>
                         <identity>{$ctx:identity}</identity>
                     </sendgrid.deletesenderaddress>
+                </case>
+
+                <case regex="urn:addmarketingemail">
+                    <sendgrid.addmarketingemail>
+                        <identity>{$ctx:identity}</identity>
+                        <name>{$ctx:name}</name>
+                        <subject>{$ctx:subject}</subject>
+                        <text>{$ctx:text}</text>
+                        <html>{$ctx:html}</html>
+                    </sendgrid.addmarketingemail>
+                </case>
+
+                <case regex="urn:editmarketingemail">
+                    <sendgrid.editmarketingemail>
+                        <identity>{$ctx:identity}</identity>
+                        <name>{$ctx:name}</name>
+                        <newname>{$ctx:newname}</newname>
+                        <subject>{$ctx:subject}</subject>
+                        <text>{$ctx:text}</text>
+                        <html>{$ctx:html}</html>
+                    </sendgrid.editmarketingemail>
+                </case>
+
+                <case regex="urn:getmarketingemail">
+                    <sendgrid.getmarketingemail>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.getmarketingemail>
+                </case>
+
+                <case regex="urn:listmarketingemail">
+                    <sendgrid.listmarketingemail>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.listmarketingemail>
+                </case>
+
+                <case regex="urn:deletemarketingemail">
+                    <sendgrid.deletemarketingemail>
+                        <name>{$ctx:name}</name>
+                    </sendgrid.deletemarketingemail>
                 </case>
 
             </switch>
