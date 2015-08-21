@@ -20,18 +20,18 @@
 
 <component name="sendgrid-recipients" type="synapse/template">
     <subComponents>
-        <component name="addrecipient">
-            <file>addrecipient.xml</file>
+        <component name="addRecipient">
+            <file>addRecipient.xml</file>
             <description>Assign a List to a Marketing Email.</description>
         </component>
 
-        <component name="getrecipient">
-            <file>getrecipient.xml</file>
+        <component name="getRecipient">
+            <file>getRecipient.xml</file>
             <description>Get all lists assigned to a particular marketing email</description>
         </component>
 
-        <component name="deleterecipient">
-            <file>deleterecipient.xml</file>
+        <component name="deleteRecipient">
+            <file>deleteRecipient.xml</file>
             <description>Remove assigned lists from marketing email</description>
         </component>
 

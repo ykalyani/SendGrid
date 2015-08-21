@@ -20,23 +20,23 @@
 
 <component name="sendgrid-lists" type="synapse/template" >
     <subComponents>
-        <component name="addlist">
-            <file>addlist.xml</file>
+        <component name="addList">
+            <file>addList.xml</file>
             <description>Create a new Recipient List.</description>
         </component>
 
-        <component name="getlist">
-            <file>getlist.xml</file>
+        <component name="getList">
+            <file>getList.xml</file>
             <description>List all Recipient Lists on your account, or check if a particular List exists.</description>
         </component>
 
-        <component name="deletelist">
-            <file>deletelist.xml</file>
+        <component name="deleteList">
+            <file>deleteList.xml</file>
             <description>Remove a Recipient List from your account.</description>
         </component>
 
-        <component name="editlist">
-            <file>editlist.xml</file>
+        <component name="editList">
+            <file>editList.xml</file>
             <description>Rename a Recipient List.</description>
         </component>
 

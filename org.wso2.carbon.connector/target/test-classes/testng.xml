@@ -10,9 +10,9 @@
     </listeners>
 
     
-    <test name="ronin-Connector-Test" preserve-order="true" verbose="2">
+    <test name="sendgrid-Connector-Test" preserve-order="true" verbose="2">
         <packages>
-            <package name="org.wso2.carbon.connector.integration.test.ronin"/>
+            <package name="org.wso2.carbon.connector.integration.test.sendgrid"/>
         </packages>
     </test>
 

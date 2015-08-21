@@ -20,28 +20,28 @@
 
 <component name="sendgrid-senderaddress" type="synapse/template">
     <subComponents>
-        <component name="addsenderaddress">
-            <file>addsenderaddress.xml</file>
-            <description>Create a new Address.</description>
+        <component name="addSenderaddress">
+            <file>addSenderaddress.xml</file>
+            <description>Createa new Address.</description>
         </component>
 
-        <component name="editsenderaddress">
-            <file>editsenderaddress.xml</file>
+        <component name="editSenderaddress">
+            <file>editSenderaddress.xml</file>
             <description>Edit an existing Address.</description>
         </component>
 
-        <component name="getsenderaddress">
-            <file>getsenderaddress.xml</file>
+        <component name="getSenderaddress">
+            <file>getSenderaddress.xml</file>
             <description>Retrieve information associated with a particular Address.</description>
         </component>
 
-        <component name="listsenderaddress">
-            <file>listsenderaddress.xml</file>
+        <component name="listSenderaddress">
+            <file>listSenderaddress.xml</file>
             <description>List all Addresses on your account, or check if a particular Address exists.</description>
         </component>
 
-        <component name="deletesenderaddress">
-            <file>deletesenderaddress.xml</file>
+        <component name="deleteSenderaddress">
+            <file>deleteSenderaddress.xml</file>
             <description>Remove an Address from your account.</description>
         </component>
 

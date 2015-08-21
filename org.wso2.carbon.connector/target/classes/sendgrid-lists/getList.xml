@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+~ Copyright (c) 2015, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+~
+~ WSO2 Inc. licenses this file to you under the Apache License,
+~ Version 2.0 (the "License"); you may not use this file except
+~ in compliance with the License.
+~ You may obtain a copy of the License at
+~
+~ http://www.apache.org/licenses/LICENSE-2.0
+~
+~ Unless required by applicable law or agreed to in writing,
+~ software distributed under the License is distributed on an
+~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~ KIND, either express or implied. See the License for the
+~ specific language governing permissions and limitations
+~ under the License.
+-->
+
+<template name="getList" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="list" description="Check for this particular list." />
+    <parameter name="api_user" description="Username of the SendGrid account." />
+    <parameter name="api_key" description="Password of the SendGrid account." />
+    <sequence>
+
+        <property name="uri.var.api_user" expression="$func:api_user" />
+        <property name="uri.var.api_key" expression="$func:api_key" />
+
+        <script language="js">
+            <![CDATA[
+        var jsonPayload = mc.getPayloadJSON();
+        var list = mc.getProperty('uri.var.list');
+
+        if (list != null && list != ""){
+        jsonPayload.client.list = list;
+        }
+
+        mc.setPayloadJSON(jsonPayload);
+        ]]>
+        </script>
+
+        <!--<property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />-->
+
+        <call>
+            <endpoint>
+                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json" />-->
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?api_key={uri.var.api_key}&amp;api_user={uri.var.api_user}" />
+                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}" />-->
+                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}&api_user={+uri.var.api_user}&api_key={+uri.var.api_key}" />-->
+            </endpoint>
+        </call>
+
+        <!-- Remove custom Headers from the API Response -->
+        <header name="X-Runtime" action="remove" scope="transport" />
+        <header name="ETag" action="remove" scope="transport" />
+        <header name="X-UA-Compatible" action="remove" scope="transport" />
+        <header name="X-Request-Id" action="remove" scope="transport" />
+        <header name="X-Rack-Cache" action="remove" scope="transport" />
+        <header name="X-Powered-By" action="remove" scope="transport" />
+
+    </sequence>
+</template>

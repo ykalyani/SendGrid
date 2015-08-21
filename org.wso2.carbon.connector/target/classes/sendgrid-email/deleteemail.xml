@@ -18,7 +18,7 @@
 ~ under the License.
 -->
 
-<template name="deleteemail" xmlns="http://ws.apache.org/ns/synapse">
+<template name="deleteEmail" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="list" description="The list which you are adding email addresses too."/>
     <parameter name="email" description="Specify the email address or email addresses you wish to remove from the specified Recipient List. May list multiple addresses with multiple email[] parameters"/>
     <sequence>
@@ -28,9 +28,7 @@
 
         <call>
             <endpoint>
-                <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/email/delete.json?list={uri.var.list}&amp;email[]={uri.var.email}"/>-->
-                <!--<http method="delete" uri-template="{uri.var.apiUrl}/lists/email/delete.json?list={+uri.var.list}&amp;email[]={+uri.var.email}"/>-->
-                <http method="post" uri-template="{uri.var.apiUrl}/lists/email/delete.json"/>
+                <http method="post" uri-template="{uri.var.apiUrl}/lists/email/delete.json?api_user={+uri.var.api_user}&amp;api_key={+uri.var.api_key}&amp;list={+uri.var.list}&amp;email={+uri.var.email}"/>
             </endpoint>
         </call>
 

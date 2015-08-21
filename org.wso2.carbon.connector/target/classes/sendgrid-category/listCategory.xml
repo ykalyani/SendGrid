@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<template name="listCategory" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="category" description="Search to see if a specific Category exists rather than a list of all Categories." />
+    <sequence>
+        <property name="uri.var.category" expression="$func:category" />
+
+        <script language="js">
+            <![CDATA[
+            var jsonPayload = mc.getPayloadJSON();
+            var category = mc.getProperty('uri.var.category');
+
+            if (category != null && category != ""){
+               jsonPayload.client.category = category;
+            }
+
+            mc.setPayloadJSON(jsonPayload);
+         ]]>
+        </script>
+
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <call>
+            <endpoint>
+                <http method="post" uri-template="{uri.var.apiUrl}/category/list.json?api_key={+uri.var.api_key}&amp;api_user={+uri.var.api_user}" />
+                <!--<http method="post" uri-template="{uri.var.apiUrl}/category/list.json" />-->
+
+            </endpoint>
+        </call>
+
+        <!-- Remove custom Headers from the API Response -->
+        <header name="X-Runtime" action="remove" scope="transport" />
+        <header name="ETag" action="remove" scope="transport" />
+        <header name="X-UA-Compatible" action="remove" scope="transport" />
+        <header name="X-Request-Id" action="remove" scope="transport" />
+        <header name="X-Rack-Cache" action="remove" scope="transport" />
+        <header name="X-Powered-By" action="remove" scope="transport" />
+
+    </sequence>
+</template>

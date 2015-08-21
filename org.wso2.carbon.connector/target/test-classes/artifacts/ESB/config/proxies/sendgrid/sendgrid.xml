@@ -35,21 +35,21 @@
             </sendgrid.init>
 
             <switch source="get-property('transport','Action')">
-                <case regex="urn:addemail">
-                    <sendgrid.addemail>
+                <case regex="urn:addEmail">
+                    <sendgrid.addEmail>
                         <list>{$ctx:list}</list>
                         <data>{$ctx:data}</data>
                         <email>{$ctx:email}</email>
                         <name>{$ctx:name}</name>
-                    </sendgrid.addemail>
+                    </sendgrid.addEmail>
                 </case>
 
-                <case regex="urn:getemail">
-                    <sendgrid.getemail>
+                <case regex="urn:getEmail">
+                    <sendgrid.getEmail>
                         <list>{$ctx:list}</list>
                         <email>{$ctx:email}</email>
                         <unsubscribed>{$ctx:unsubscribed}</unsubscribed>
-                    </sendgrid.getemail>
+                    </sendgrid.getEmail>
                 </case>
 
                 <case regex="urn:deleteemail">
@@ -59,107 +59,107 @@
                     </sendgrid.deleteemail>
                 </case>
 
-                <case regex="urn:countemail">
-                    <sendgrid.countemail>
+                <case regex="urn:countEmail">
+                    <sendgrid.countEmail>
                         <list>{$ctx:list}</list>
-                    </sendgrid.countemail>
+                    </sendgrid.countEmail>
                 </case>
 
-                <case regex="urn:addlist">
-                    <sendgrid.addlist>
+                <case regex="urn:addList">
+                    <sendgrid.addList>
                         <list>{$ctx:list}</list>
                         <name>{$ctx:name}</name>
-                    </sendgrid.addlist>
+                    </sendgrid.addList>
                 </case>
 
-                <case regex="urn:getlist">
-                    <sendgrid.getlist>
+                <case regex="urn:getList">
+                    <sendgrid.getList>
                         <list>{$ctx:list}</list>
-                    </sendgrid.getlist>
+                    </sendgrid.getList>
                 </case>
 
-                <case regex="urn:deletelist">
-                    <sendgrid.deletelist>
+                <case regex="urn:deleteList">
+                    <sendgrid.deleteList>
                         <list>{$ctx:list}</list>
-                    </sendgrid.deletelist>
+                    </sendgrid.deleteList>
                 </case>
 
-                <case regex="urn:editlist">
-                    <sendgrid.editlist>
+                <case regex="urn:editList">
+                    <sendgrid.editList>
                         <list>{$ctx:list}</list>
                         <newlist>{$ctx:newlist}</newlist>
-                    </sendgrid.editlist>
+                    </sendgrid.editList>
                 </case>
 
-                <case regex="urn:createcategory">
-                    <sendgrid.createcategory>
+                <case regex="urn:createCategory">
+                    <sendgrid.createCategory>
                         <category>{$ctx:category}</category>
-                    </sendgrid.createcategory>
+                    </sendgrid.createCategory>
                 </case>
 
-                <case regex="urn:addcategory">
-                    <sendgrid.addcategory>
+                <case regex="urn:addCategory">
+                    <sendgrid.addCategory>
                         <category>{$ctx:category}</category>
                         <name>{$ctx:name}</name>
-                    </sendgrid.addcategory>
+                    </sendgrid.addCategory>
                 </case>
 
-                <case regex="urn:removecategory">
-                    <sendgrid.removecategory>
+                <case regex="urn:removeCategory">
+                    <sendgrid.removeCategory>
                         <name>{$ctx:name}</name>
                         <category>{$ctx:category}</category>
-                    </sendgrid.removecategory>
+                    </sendgrid.removeCategory>
                 </case>
 
-                <case regex="urn:listcategory">
-                    <sendgrid.listcategory>
+                <case regex="urn:listCategory">
+                    <sendgrid.listCategory>
                         <category>{$ctx:category}</category>
-                    </sendgrid.listcategory>
+                    </sendgrid.listCategory>
                 </case>
-                addrecipient
 
-                <case regex="urn:addrecipient">
-                    <sendgrid.addrecipient>
+
+                <case regex="urn:addRecipient">
+                    <sendgrid.addRecipient>
                         <list>{$ctx:list}</list>
                         <name>{$ctx:name}</name>
-                    </sendgrid.addrecipient>
+                    </sendgrid.addRecipient>
                 </case>
 
-                <case regex="urn:getrecipient">
-                    <sendgrid.getrecipient>
+                <case regex="urn:getRecipient">
+                    <sendgrid.getRecipient>
                         <name>{$ctx:name}</name>
-                    </sendgrid.getrecipient>
+                    </sendgrid.getRecipient>
                 </case>
 
-                <case regex="urn:deleterecipient">
-                    <sendgrid.deleterecipient>
+                <case regex="urn:deleteRecipient">
+                    <sendgrid.deleteRecipient>
                         <name>{$ctx:name}</name>
                         <list>{$ctx:list}</list>
-                    </sendgrid.deleterecipient>
+                    </sendgrid.deleteRecipient>
                 </case>
 
-                <case regex="urn:addschedule">
-                    <sendgrid.addschedule>
+                <case regex="urn:addSchedule">
+                    <sendgrid.addSchedule>
                         <name>{$ctx:name}</name>
                         <at>{$ctx:at}</at>
                         <after>{$ctx:after}</after>
-                    </sendgrid.addschedule>
+                    </sendgrid.addSchedule>
                 </case>
 
-                <case regex="urn:getschedule">
-                    <sendgrid.getschedule>
+                <case regex="urn:getSchedule">
+                    <sendgrid.getSchedule>
                         <name>{$ctx:name}</name>
-                    </sendgrid.getschedule>
+                    </sendgrid.getSchedule>
                 </case>
 
-                <case regex="urn:deleteschedule">
-                    <sendgrid.deleteschedule>
+                <case regex="urn:deleteSchedule">
+                    <sendgrid.deleteSchedule>
                         <name>{$ctx:name}</name>
-                    </sendgrid.deleteschedule>
+                    </sendgrid.deleteSchedule>
                 </case>
 
-                <case regex="urn:addsenderaddress">
-                    <sendgrid.addsenderaddress>
+                <case regex="urn:addSenderaddress">
+                    <sendgrid.addSenderaddress>
                         <identity>{$ctx:identity}</identity>
                         <name>{$ctx:name}</name>
                         <email>{$ctx:email}</email>
@@ -169,75 +169,75 @@
                         <state>{$ctx:state}</state>
                         <zip>{$ctx:zip}</zip>
                         <country>{$ctx:country}</country>
-                    </sendgrid.addsenderaddress>
+                    </sendgrid.addSenderaddress>
                 </case>
 
-                <case regex="urn:editsenderaddress">
-                    <sendgrid.editsenderaddress>
+                <case regex="urn:editSenderaddress">
+                    <sendgrid.editSenderaddress>
                         <identity>{$ctx:identity}</identity>
                         <newidentity>{$ctx:newidentity}</newidentity>
                         <name>{$ctx:name}</name>
                         <email>{$ctx:email}</email>
                         <replyto>{$ctx:replyto}</replyto>
                         <address>{$ctx:address}</address>
-                    </sendgrid.editsenderaddress>
+                    </sendgrid.editSenderaddress>
                 </case>
 
-                <case regex="urn:getsenderaddress">
-                    <sendgrid.getsenderaddress>
+                <case regex="urn:getSenderaddress">
+                    <sendgrid.getSenderaddress>
                         <identity>{$ctx:identity}</identity>
-                    </sendgrid.getsenderaddress>
+                    </sendgrid.getSenderaddress>
                 </case>
 
-                <case regex="urn:listsenderaddress">
-                    <sendgrid.listsenderaddress>
+                <case regex="urn:listSenderaddress">
+                    <sendgrid.listSenderaddress>
                         <identity>{$ctx:identity}</identity>
-                    </sendgrid.listsenderaddress>
+                    </sendgrid.listSenderaddress>
                 </case>
 
-                <case regex="urn:deletesenderaddress">
-                    <sendgrid.deletesenderaddress>
+                <case regex="urn:deleteSenderaddress">
+                    <sendgrid.deleteSenderaddress>
                         <identity>{$ctx:identity}</identity>
-                    </sendgrid.deletesenderaddress>
+                    </sendgrid.deleteSenderaddress>
                 </case>
 
-                <case regex="urn:addmarketingemail">
-                    <sendgrid.addmarketingemail>
+                <case regex="urn:addMarketingEmail">
+                    <sendgrid.addMarketingEmail>
                         <identity>{$ctx:identity}</identity>
                         <name>{$ctx:name}</name>
                         <subject>{$ctx:subject}</subject>
                         <text>{$ctx:text}</text>
                         <html>{$ctx:html}</html>
-                    </sendgrid.addmarketingemail>
+                    </sendgrid.addMarketingEmail>
                 </case>
 
-                <case regex="urn:editmarketingemail">
-                    <sendgrid.editmarketingemail>
+                <case regex="urn:editMarketingEmail">
+                    <sendgrid.editMarketingEmail>
                         <identity>{$ctx:identity}</identity>
                         <name>{$ctx:name}</name>
                         <newname>{$ctx:newname}</newname>
                         <subject>{$ctx:subject}</subject>
                         <text>{$ctx:text}</text>
                         <html>{$ctx:html}</html>
-                    </sendgrid.editmarketingemail>
+                    </sendgrid.editMarketingEmail>
                 </case>
 
-                <case regex="urn:getmarketingemail">
-                    <sendgrid.getmarketingemail>
+                <case regex="urn:getMarketingEmail">
+                    <sendgrid.getMarketingEmail>
                         <name>{$ctx:name}</name>
-                    </sendgrid.getmarketingemail>
+                    </sendgrid.getMarketingEmail>
                 </case>
 
-                <case regex="urn:listmarketingemail">
-                    <sendgrid.listmarketingemail>
+                <case regex="urn:listMarketingEmail">
+                    <sendgrid.listMarketingEmail>
                         <name>{$ctx:name}</name>
-                    </sendgrid.listmarketingemail>
+                    </sendgrid.listMarketingEmail>
                 </case>
 
-                <case regex="urn:deletemarketingemail">
-                    <sendgrid.deletemarketingemail>
+                <case regex="urn:deleteMarketingEmail">
+                    <sendgrid.deleteMarketingEmail>
                         <name>{$ctx:name}</name>
-                    </sendgrid.deletemarketingemail>
+                    </sendgrid.deleteMarketingEmail>
                 </case>
 
             </switch>

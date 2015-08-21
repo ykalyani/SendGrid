@@ -20,28 +20,28 @@
 
 <component name="sendgrid-marketingemail" type="synapse/template">
     <subComponents>
-        <component name="addmarketingemail">
-            <file>addmarketingemail.xml</file>
+        <component> name="addMarketingEmail">
+            <file>addMarketingEmail.xml</file>
             <description>Create a new Marketing Email.</description>
         </component>
 
-        <component name="editmarketingemail">
-            <file>editmarketingemail.xml</file>
+        <component name="editMarketingEmail">
+            <file>editMarketingEmail.xml</file>
             <description>Edit an existing Marketing Email.</description>
         </component>
 
-        <component name="getmarketingemail">
-            <file>getmarketingemail.xml</file>
+        <component name="getMarketingEmail">
+            <file>getMarketingEmail.xml</file>
             <description>Retrieve the contents of an existing Marketing Email.</description>
         </component>
 
-        <component name="listmarketingemail">
-            <file>listmarketingemail.xml</file>
+        <component name="listMarketingEmail">
+            <file>listMarketingEmail.xml</file>
             <description>Retrieve a list of all existing Marketing Email.</description>
         </component>
 
-        <component name="deletemarketingemail">
-            <file>deletemarketingemail.xml</file>
+        <component name="deleteMarketingEmail">
+            <file>deleteMarketingEmail.xml</file>
             <description>Remove an existing Marketing Email.</description>
         </component>
 
