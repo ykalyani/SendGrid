@@ -1,6 +1,11 @@
 proxyDirectoryRelativePath=/../src/test/resources/artifacts/ESB/config/proxies/sendgrid/
 requestDirectoryRelativePath=/../src/test/resources/artifacts/ESB/config/restRequests/sendgrid/
 
+<<<<<<< HEAD
+apiUrl=https://api.sendgrid.com/api/newsletter
+api_user=ykalyani
+api_key=2015wso2
+=======
 apiUrl=https://sendgrid.com
 
 list=mary
@@ -42,3 +47,4 @@ amount=500.0
 paymentNote=Cash Payment
 paymentReceivedOn=2015-06-10
 transactionFeeAmount=150.0
+>>>>>>> b84a9a0aa1b4cf93edb569143da2e6f6c6754135
