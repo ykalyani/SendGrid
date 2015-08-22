@@ -22,12 +22,12 @@
     <parameter name="list" description="The list which you are adding email addresses too."/>
     <sequence>
         <property name="uri.var.list" expression="$func:list"/>
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
 
         <call>
             <endpoint>
                 <!--<http method="count" uri-template="{uri.var.apiUrl}/lists/email/count.json?list={uri.var.list}"/>-->
-                <http method="count" uri-template="{uri.var.apiUrl}/lists/email/count.json?api_user={+uri.var.api_user}&amp;api_key={+uri.var.api_key}&amp;list={+uri.var.list}"/>
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/count.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}"/>
             </endpoint>
         </call>
 

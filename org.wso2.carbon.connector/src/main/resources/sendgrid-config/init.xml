@@ -20,12 +20,12 @@
 
 <template name="init" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="apiUrl" description="Base endpoint URL of SendGrid API." />
-    <parameter name="api_user" description="Username of the SendGrid account." />
-    <parameter name="api_key" description="Password of the SendGrid account." />
+    <parameter name="apiUser" description="Username of the SendGrid account." />
+    <parameter name="apiKey" description="Password of the SendGrid account." />
     <sequence>
         <property name="uri.var.apiUrl" expression="$func:apiUrl" />
-        <property name="uri.var.api_user" expression="$func:api_user" />
-        <property name="uri.var.api_key" expression="$func:api_key" />
+        <property name="uri.var.apiUser" expression="$func:apiUser" />
+        <property name="uri.var.apiKey" expression="$func:apiKey" />
 
         <header name="Content-Type" value="application/json" scope="transport" />
         <header name="Accept" value="application/json" scope="transport" />

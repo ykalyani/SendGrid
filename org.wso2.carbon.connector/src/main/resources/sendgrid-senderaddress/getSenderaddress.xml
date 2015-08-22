@@ -27,7 +27,7 @@
 
         <call>
             <endpoint>
-                <http method="get" uri-template="{uri.var.apiUrl}/identity/get.json" />
+                <http method="get" uri-template="{uri.var.apiUrl}/identity/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}" />
 
             </endpoint>
         </call>

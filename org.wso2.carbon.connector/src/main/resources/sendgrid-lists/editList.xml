@@ -23,8 +23,6 @@
     <parameter name="newlist" description="Specify the new name for the Recipient List. " />
     <sequence>
 
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
-
         <property name="uri.var.list" expression="$func:list" />
         <property name="uri.var.newlist" expression="$func:newlist" />
 
@@ -44,9 +42,7 @@
 
         <call>
             <endpoint>
-                <!--<http method="edit" uri-template="{uri.var.apiUrl}/lists/edit.json" />-->
-                <!--<http method="edit" uri-template="{uri.var.apiUrl}/lists/edit.json?list={+uri.var.list}&amp;newlist={+uri.var.newlist}" />-->
-                <http method="post" uri-template="{uri.var.apiUrl}/lists/add.json?list={+uri.var.list}&amp;newlist={+uri.var.newlist}&amp;api_user={+uri.var.api_user}&amp;api_key={+uri.var.api_key}" />
+                <http method="post" uri-template="{uri.var.apiUrl}/lists/edit.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}&amp;newlist={+uri.var.newlist}" />
 
             </endpoint>
         </call>

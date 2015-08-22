@@ -24,6 +24,8 @@
     <parameter name="after" description="Number of minutes until delivery should occur." />
     <sequence>
         <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.at" expression="$func:at" />
+        <property name="uri.var.after" expression="$func:after" />
 
         <script language="js">
             <![CDATA[
@@ -46,7 +48,8 @@
 
         <call>
             <endpoint>
-                <http method="post" uri-template="{uri.var.apiUrl}/schedule/add.json?api_key={+uri.var.api_key}&amp;api_user={+uri.var.api_user}&amp;name={+uri.var.name}" />
+                <http method="post" uri-template="{uri.var.apiUrl}/schedule/add.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;name={+uri.var.name}
+                &amp;at={+uri.var.at}&amp;after={+uri.var.after}" />
 
             </endpoint>
         </call>

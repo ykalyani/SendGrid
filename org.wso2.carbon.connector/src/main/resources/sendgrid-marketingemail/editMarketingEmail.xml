@@ -29,6 +29,7 @@
     <sequence>
         <property name="uri.var.identity" expression="$func:identity" />
         <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.newname" expression="$func:newname" />
         <property name="uri.var.subject" expression="$func:subject" />
         <property name="uri.var.replyto" expression="$func:replyto" />
         <property name="uri.var.text" expression="$func:text" />
@@ -51,7 +52,9 @@
 
         <call>
             <endpoint>
-                <http method="edit" uri-template="{uri.var.apiUrl}/edit.json" />
+                <http method="edit" uri-template="{uri.var.apiUrl}/edit.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}
+                &amp;name={+uri.var.name}&amp;newname={+uri.var.newname}&amp;subject={+uri.var.subject}&amp;replyto={+uri.var.replyto}
+                &amp;text={+uri.var.text}&amp;html={+uri.var.html}" />
 
             </endpoint>
         </call>

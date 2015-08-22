@@ -25,16 +25,14 @@
         <property name="uri.var.category" expression="$func:category" />
         <property name="uri.var.name" expression="$func:name" />
 
-
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>
             <endpoint>
-                <http method="add" uri-template="{uri.var.apiUrl}/category/add.json?category={+uri.var.category}&amp;name={+uri.var.name}&amp;api_key={+uri.var.api_key}&amp;api_user={+uri.var.api_user}" />
+                <http method="add" uri-template="{uri.var.apiUrl}/category/add.json?category={+uri.var.category}&amp;name={+uri.var.name}&amp;api_key={+uri.var.apiKey}&amp;api_user={+uri.var.apiUser}" />
 
             </endpoint>
         </call>
-
 
         <!-- Remove custom Headers from the API Response -->
         <header name="X-Runtime" action="remove" scope="transport" />

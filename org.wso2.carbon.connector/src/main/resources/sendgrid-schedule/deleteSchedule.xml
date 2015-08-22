@@ -18,7 +18,7 @@
 ~ under the License.
 -->
 
-<template name="deleteschedule" xmlns="http://ws.apache.org/ns/synapse">
+<template name="deleteSchedule" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="name" description="Remove the scheduled delivery time from an existing Marketing Email." />
     <sequence>
         <property name="uri.var.name" expression="$func:name" />
@@ -27,7 +27,7 @@
 
         <call>
             <endpoint>
-                <http method="post" uri-template="{uri.var.apiUrl}/schedule/delete.json?api_key={+uri.var.api_key}&amp;api_user={+uri.var.api_user}&amp;name={+uri.var.name}" />
+                <http method="post" uri-template="{uri.var.apiUrl}/schedule/delete.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;name={+uri.var.name}" />
 
             </endpoint>
         </call>

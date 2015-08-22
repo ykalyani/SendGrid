@@ -20,12 +20,13 @@
 
 <template name="getList" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="list" description="Check for this particular list." />
-    <parameter name="api_user" description="Username of the SendGrid account." />
-    <parameter name="api_key" description="Password of the SendGrid account." />
+<!--    <parameter name="api_user" description="Username of the SendGrid account." />
+    <parameter name="api_key" description="Password of the SendGrid account." />-->
     <sequence>
 
-        <property name="uri.var.api_user" expression="$func:api_user" />
-        <property name="uri.var.api_key" expression="$func:api_key" />
+      <!--  <property name="uri.var.api_user" expression="$func:api_user" />
+        <property name="uri.var.api_key" expression="$func:api_key" />-->
+        <property name="uri.var.list" expression="$func:list" />
 
         <script language="js">
             <![CDATA[
@@ -40,14 +41,12 @@
         ]]>
         </script>
 
-        <!--<property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />-->
 
         <call>
             <endpoint>
-                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json" />-->
-                <http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?api_key={uri.var.api_key}&amp;api_user={uri.var.api_user}" />
-                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}" />-->
-                <!--<http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?list={+uri.var.list}&api_user={+uri.var.api_user}&api_key={+uri.var.api_key}" />-->
+
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/get.json?api_key={uri.var.apiKey}&amp;api_user={uri.var.apiUser}&amp;list={uri.var.list}" />
+
             </endpoint>
         </call>
 

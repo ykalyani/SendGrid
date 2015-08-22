@@ -21,6 +21,7 @@
 <template name="listSenderaddress" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="identity" description="Check for this particular Identity. (To list all Addresses on your account exclude this parameter)" />
     <sequence>
+        <property name="uri.var.identity" expression="$func:identity" />
 
         <script language="js">
             <![CDATA[
@@ -38,7 +39,7 @@
 
         <call>
             <endpoint>
-                <http method="post" uri-template="{uri.var.apiUrl}/identity/list.json" />
+                <http method="post" uri-template="{uri.var.apiUrl}/identity/list.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}" />
 
             </endpoint>
         </call>

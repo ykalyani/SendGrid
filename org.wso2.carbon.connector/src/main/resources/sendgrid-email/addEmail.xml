@@ -29,7 +29,7 @@
 
         <call>
             <endpoint>
-                <http method="add" uri-template="{uri.var.apiUrl}/lists/email/add.json?api_user={+uri.var.api_user}&amp;api_key={+uri.var.api_key}&amp;data={+uri.var.data}&amp;list={+uri.var.list}" />
+                <http method="add" uri-template="{uri.var.apiUrl}/lists/email/add.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;data={+uri.var.data}&amp;list={+uri.var.list}" />
             </endpoint>
         </call>
 

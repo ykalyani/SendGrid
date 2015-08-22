@@ -24,6 +24,8 @@
     <parameter name="unsubscribed" description="To retrieve a list of unsubscribed email addresses" />
     <sequence>
         <property name="uri.var.list" expression="$func:list" />
+        <!--<property name="uri.var.email" expression="$func:email" />
+        <property name="uri.var.unsubscribed" expression="$func:unsubscribed" />-->
 
         <script language="js">
             <![CDATA[
@@ -46,7 +48,8 @@
 
         <call>
             <endpoint>
-                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?list={+uri.var.list}&amp;api_user={+uri.var.api_user}&amp;api_key={+uri.var.api_key}" />
+         <!--       <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}&amp;email={uri.var.email}&amp;unsubscribed={uri.var.unsubscribed}" />-->
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}" />
 
             </endpoint>
         </call>

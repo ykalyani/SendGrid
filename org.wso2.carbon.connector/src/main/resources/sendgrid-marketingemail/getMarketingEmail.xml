@@ -24,11 +24,9 @@
     <sequence>
         <property name="uri.var.name" expression="$func:name" />
 
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
-
         <call>
             <endpoint>
-                <http method="get" uri-template="{uri.var.apiUrl}/get.json" />
+                <http method="get" uri-template="{uri.var.apiUrl}/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;name={+uri.var.name}" />
 
             </endpoint>
         </call>

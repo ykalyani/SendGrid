@@ -16,8 +16,6 @@ import org.wso2.connector.integration.test.base.RestResponse;
 
 public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 
-
-
     private Map<String, String> esbRequestHeadersMap = new HashMap<String, String>();
 
     private Map<String, String> apiRequestHeadersMap = new HashMap<String, String>();
@@ -60,16 +58,35 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "getListMandatory.json");
 
-        String apiEndPoint = connectorProperties.getProperty("apiUrl")+"/"+"/lists/get.json?"+"api_user="+connectorProperties.getProperty("api_user")+"&"+"api_key="+connectorProperties.getProperty("api_key");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl")+"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")+"&"+"api_key="+connectorProperties.getProperty("apiKey");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
-
-        Assert.assertEquals(esbPlansListArray.getJSONObject(0).getJSONObject("list").getString("id"), apiPlansListArray
-                .getJSONObject(0).getJSONObject("list").getString("id"));
 /*
+        Assert.assertEquals(esbPlansListArray.getJSONObject(0).getJSONObject("list").getString("id"), apiPlansListArray
+                .getJSONObject(0).getJSONObject("list").getString("id"));*/
         Assert.assertEquals(esbRestResponse.getBody().get("list"), apiRestResponse.getBody().get("list"));
-        Assert.assertEquals(esbRestResponse.getBody().get("id"), apiRestResponse.getBody().get("id"));*/
+       /* Assert.assertEquals(esbRestResponse.getBody().get("id"), apiRestResponse.getBody().get("id"));*/
+    }
+
+    @Test(priority = 1, description = "SendGrid {getList} integration test with optional parameters.")
+    public void testgetListWithMandatoryParameters() throws IOException, JSONException {
+
+
+        esbRequestHeadersMap.put("Action", "urn:getList");
+
+        RestResponse<JSONObject> esbRestResponse =
+                sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "getListMandatory.json");
+
+        String apiEndPoint = connectorProperties.getProperty("apiUrl")+"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")+"&"+"api_key="+connectorProperties.getProperty("apiKey");
+        RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
+        Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
+/*
+        Assert.assertEquals(esbPlansListArray.getJSONObject(0).getJSONObject("list").getString("id"), apiPlansListArray
+                .getJSONObject(0).getJSONObject("list").getString("id"));*/
+        Assert.assertEquals(esbRestResponse.getBody().get("list"), apiRestResponse.getBody().get("list"));
+       /* Assert.assertEquals(esbRestResponse.getBody().get("id"), apiRestResponse.getBody().get("id"));*/
     }
 
 

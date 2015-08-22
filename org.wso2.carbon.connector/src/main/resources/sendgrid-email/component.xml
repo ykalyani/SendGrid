@@ -32,8 +32,8 @@
             <file>countEmail.xml</file>
             <description>Retrieve the number of entries on a list.</description>
         </component>
-        <component name="deleteemail">
-            <file>deleteemail.xml</file>
+        <component name="deleteEmail">
+            <file>deleteEmail.xml</file>
             <description>Remove one or more emails from a Recipient List.</description>
         </component>
     </subComponents>

@@ -18,31 +18,16 @@
 ~ under the License.
 -->
 
-<template name="addList" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="list" description="Create a Recipient List with this name.." />
-    <parameter name="name" description="Specify the column name for the name associated with email addresses.." />
+<template name="deleteEmail" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="list" description="The list which you are adding email addresses too."/>
+    <parameter name="email" description="Specify the email address or email addresses you wish to remove from the specified Recipient List. May list multiple addresses with multiple email[] parameters"/>
     <sequence>
-        <property name="uri.var.list" expression="$func:list" />
-        <property name="uri.var.name" expression="$func:name" />
-
-        <script language="js">
-            <![CDATA[
-            var jsonPayload = mc.getPayloadJSON();
-            var name = mc.getProperty('uri.var.name');
-
-            if (name != null && name != ""){
-               jsonPayload.client.name = name;
-            }
-
-            mc.setPayloadJSON(jsonPayload);
-         ]]>
-        </script>
-
+        <property name="uri.var.list" expression="$func:list"/>
+        <property name="uri.var.email" expression="$func:email"/>
 
         <call>
             <endpoint>
-                <http method="post" uri-template="{uri.var.apiUrl}/lists/add.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}&amp;name={+uri.var.name}" />
-
+                <http method="post" uri-template="{uri.var.apiUrl}/lists/email/delete.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}&amp;email={+uri.var.email}"/>
             </endpoint>
         </call>
 
