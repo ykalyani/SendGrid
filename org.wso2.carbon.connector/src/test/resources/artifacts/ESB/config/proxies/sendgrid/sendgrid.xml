@@ -40,8 +40,6 @@
                     <sendgrid.addEmail>
                         <list>{$ctx:list}</list>
                         <data>{$ctx:data}</data>
-                        <email>{$ctx:email}</email>
-                        <name>{$ctx:name}</name>
                     </sendgrid.addEmail>
                 </case>
                 <case regex="urn:getEmail">

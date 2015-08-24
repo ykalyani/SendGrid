@@ -45,7 +45,7 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
 
     }
 
-    /**
+ /**
      * Positive test case for getList method with mandatory parameters.
      *
      * @throws JSONException
@@ -53,17 +53,16 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
      */
 
     @Test(priority = 1, description = "SendGrid {getList} integration test with mandatory parameters.")
-    public void testGetListWithMandatoryParameters() throws IOException, JSONException {
+    public void testgetListWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getList");
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getList_mandatory.json");
 
-        final String apiEndpoint = connectorProperties.getProperty("apiUrl") +"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")
-                +"&"+"api_key="+connectorProperties.getProperty("apiKey");
+        final String apiEndpoint = connectorProperties.getProperty("apiUrl") +"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")+"&"+"api_key="+connectorProperties.getProperty("apiKey");
 
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
 
-        // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
+       // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
 
 
     }
@@ -76,7 +75,7 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
      */
 
     @Test(priority = 1, description = "SendGrid {getList} integration test with optional parameters.")
-    public void testGetListWithOptionalParameters() throws IOException, JSONException {
+    public void testgetListWithOptionalParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getList");
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getList_optional.json");
@@ -85,21 +84,20 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
                 "&"+"api_key="+connectorProperties.getProperty("apiKey")+"&" + "list="+connectorProperties.getProperty("list");
 
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-        // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
+       // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
 
     }
 
 
-
-    /**
+   /**
      * Negative test case for getList method with Mandatory parameters.
      *
      * @throws JSONException
      * @throws IOException
      */
 
-    @Test(priority = 1, description = "SendGrid {getList} integration test with Mandatory parameters.")
-    public void testGetListWithNegativeParameters() throws IOException, JSONException {
+    @Test(priority = 1, description = "SendGrid {getList} integration test with optional parameters.")
+    public void testgetListWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:getList");
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getList_negative.json");
@@ -108,9 +106,10 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
                 "&"+"api_key="+connectorProperties.getProperty("apiKeyN");
 
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-        // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
+        Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
 
     }
+
 
 
     /**
@@ -165,17 +164,17 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
      */
 
     @Test(priority = 1, description = "SendGrid {editList} integration test with mandatory parameters.")
-    public void testEditListWithMandatoryParameters() throws IOException, JSONException {
+    public void testeditListWithMandatoryParameters() throws IOException, JSONException {
 
         esbRequestHeadersMap.put("Action", "urn:editList");
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_editList_mandatory.json");
 
-        final String apiEndpoint = connectorProperties.getProperty("apiUrl") +"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")
-                +"&"+"api_key="+connectorProperties.getProperty("apiKey")+ "list="+connectorProperties.getProperty("Elist")+ "newlist="+connectorProperties.getProperty("NEWlist");
+        final String apiEndpoint = connectorProperties.getProperty("apiUrl") +"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")+"&"+"api_key="+connectorProperties.getProperty("apiKey")+
+                "list="+connectorProperties.getProperty("Elist")+ "newlist="+connectorProperties.getProperty("NEWlist");
 
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
 
-        //   Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
+     //   Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
     }
 
 
@@ -192,11 +191,35 @@ public class SendGridConnectorIntegrationTest extends ConnectorIntegrationTestBa
         esbRequestHeadersMap.put("Action", "urn:deleteList");
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteList_mandatory.json");
 
-        final String apiEndpoint = connectorProperties.getProperty("apiUrl") +"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")
-                +"&"+"api_key="+connectorProperties.getProperty("apiKey")+ "&"+"list="+connectorProperties.getProperty("deletelist");
+        final String apiEndpoint = connectorProperties.getProperty("apiUrl") +"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")+"&"+"api_key="+connectorProperties.getProperty("apiKey")+
+                "&"+"list="+connectorProperties.getProperty("deletelist");
 
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
-        // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
+       // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
+
+    }
+
+
+
+
+    /**
+     * Negative test case for getList method with Mandatory parameters.
+     *
+     * @throws JSONException
+     * @throws IOException
+     */
+
+    @Test(priority = 1, description = "SendGrid {getList} integration test with optional parameters.")
+    public void testgetListWithMandatoryParameters() throws IOException, JSONException {
+
+        esbRequestHeadersMap.put("Action", "urn:getList");
+        RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_getList_negative.json");
+
+        final String apiEndpoint = connectorProperties.getProperty("apiUrl") +"/lists/get.json?"+"api_user="+connectorProperties.getProperty("apiUser")+
+                "&"+"api_key="+connectorProperties.getProperty("apiKeyN");
+
+        RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndpoint, "GET", apiRequestHeadersMap);
+       // Assert.assertEquals(esbRestResponse.getHttpStatusCode(), apiRestResponse.getHttpStatusCode());
 
     }
 

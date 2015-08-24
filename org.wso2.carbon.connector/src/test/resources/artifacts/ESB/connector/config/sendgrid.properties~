@@ -1,1 +1,23 @@
+proxyDirectoryRelativePath=/../src/test/resources/artifacts/ESB/config/proxies/sendgrid/
+requestDirectoryRelativePath=/../src/test/resources/artifacts/ESB/config/restRequests/sendgrid/
 
+apiUrl=https://api.sendgrid.com/api/newsletter
+apiUser=ykalyani
+apiKey=2015wso2
+apiKeyN=
+
+list=a
+listId=43185604
+
+Addlist=addadd
+OAddlist=addO
+OAddlistname=OTestADDName
+
+Elist=a
+NEWlist=anew
+negativeEditList=nolist
+
+deletelist=addadd
+
+categoryName=categorytest1
+nameofMarketingEmail=newMarketingemail
