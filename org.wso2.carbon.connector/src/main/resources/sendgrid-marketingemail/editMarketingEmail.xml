@@ -35,26 +35,18 @@
         <property name="uri.var.text" expression="$func:text" />
         <property name="uri.var.html" expression="$func:html" />
 
-        <script language="js">
-            <![CDATA[
-            var jsonPayload = mc.getPayloadJSON();
-            var newname = mc.getProperty('uri.var.newname');
 
-            if (newname != null && newname != ""){
-               jsonPayload.client.newname = newname;
-            }
+        <filter xpath="(not(get-property('uri.var.newname') = '' or (not(string(get-property('uri.var.newname'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;newname=',get-property('uri.var.newname'))"/>
+            </then>
+        </filter>
 
-            mc.setPayloadJSON(jsonPayload);
-         ]]>
-        </script>
-
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
         <call>
             <endpoint>
-                <http method="edit" uri-template="{uri.var.apiUrl}/edit.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}
-                &amp;name={+uri.var.name}&amp;newname={+uri.var.newname}&amp;subject={+uri.var.subject}&amp;replyto={+uri.var.replyto}
-                &amp;text={+uri.var.text}&amp;html={+uri.var.html}" />
+                <http method="edit" uri-template="{uri.var.apiUrl}/edit.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}&amp;name={+uri.var.name}&amp;subject={+uri.var.subject}&amp;replyto={+uri.var.replyto}&amp;text={+uri.var.text}&amp;html={+uri.var.html}&amp;{+uri.var.optionalParameters}" />
 
             </endpoint>
         </call>

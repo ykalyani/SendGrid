@@ -25,24 +25,17 @@
 
         <property name="uri.var.name" expression="$func:name" />
 
-        <script language="js">
-            <![CDATA[
-            var jsonPayload = mc.getPayloadJSON();
-            var name = mc.getProperty('uri.var.name');
 
-            if (name != null && name != ""){
-               jsonPayload.client.name = name;
-            }
-
-            mc.setPayloadJSON(jsonPayload);
-         ]]>
-        </script>
-
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+        <filter xpath="(not(get-property('uri.var.name') = '' or (not(string(get-property('uri.var.name'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;name=',get-property('uri.var.name'))"/>
+            </then>
+        </filter>
 
         <call>
             <endpoint>
-                <http method="post" uri-template="{uri.var.apiUrl}/list.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;name={+uri.var.name}" />
+                <http method="post" uri-template="{uri.var.apiUrl}/list.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;{+uri.var.optionalParameters}" />
 
             </endpoint>
         </call>

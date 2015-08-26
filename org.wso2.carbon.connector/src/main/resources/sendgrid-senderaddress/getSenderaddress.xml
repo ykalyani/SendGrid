@@ -23,8 +23,6 @@
     <sequence>
         <property name="uri.var.identity" expression="$func:identity" />
 
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
-
         <call>
             <endpoint>
                 <http method="get" uri-template="{uri.var.apiUrl}/identity/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}" />

@@ -33,13 +33,9 @@
         <property name="uri.var.text" expression="$func:text" />
         <property name="uri.var.html" expression="$func:html" />
 
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
-
         <call>
             <endpoint>
-                <http method="add" uri-template="{uri.var.apiUrl}/add.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}
-                &amp;name={+uri.var.name}&amp;subject={+uri.var.subject}&amp;replyto={+uri.var.replyto}
-                &amp;text={+uri.var.text}&amp;html={+uri.var.html}" />
+                <http method="add" uri-template="{uri.var.apiUrl}/add.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}&amp;name={+uri.var.name}&amp;subject={+uri.var.subject}&amp;replyto={+uri.var.replyto}&amp;text={+uri.var.text}&amp;html={+uri.var.html}" />
 
             </endpoint>
         </call>

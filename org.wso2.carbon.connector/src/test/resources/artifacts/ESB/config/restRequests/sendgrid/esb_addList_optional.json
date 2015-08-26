@@ -2,6 +2,6 @@
   "apiUrl" : "%s(apiUrl)",
   "apiUser" : "%s(apiUser)",
   "apiKey" : "%s(apiKey)",
-  "list":"%s(OAddlist)",
-  "name":"%s(OAddlistname)"
+  "list":"%s(addlistNameOptional)",
+  "name":"%s(nameOfAddList)"
 }

@@ -2,6 +2,6 @@
   "apiUrl" : "%s(apiUrl)",
   "apiUser" : "%s(apiUser)",
   "apiKey" : "%s(apiKey)",
-  "category" : "%s(categoryName)",
-  "name" : "%s(nameofMarketingEmail)"
+  "category" : "%s(addCategoryName)",
+  "name" : "%s(marktingEmailName)"
 }

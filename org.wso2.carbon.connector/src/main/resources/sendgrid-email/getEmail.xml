@@ -24,32 +24,29 @@
     <parameter name="unsubscribed" description="To retrieve a list of unsubscribed email addresses" />
     <sequence>
         <property name="uri.var.list" expression="$func:list" />
-        <!--<property name="uri.var.email" expression="$func:email" />
-        <property name="uri.var.unsubscribed" expression="$func:unsubscribed" />-->
+        <property name="uri.var.email" expression="$func:email" />
+        <property name="uri.var.unsubscribed" expression="$func:unsubscribed" />
 
-        <script language="js">
-            <![CDATA[
-            var jsonPayload = mc.getPayloadJSON();
-            var email = mc.getProperty('uri.var.email');
-            var unsubscribed = mc.getProperty('uri.var.unsubscribed');
 
-            if (email != null && email != ""){
-               jsonPayload.client.email = email;
-            }
-            if (unsubscribed != null && unsubscribed != ""){
-               jsonPayload.client.unsubscribed = unsubscribed;
-            }
+        <filter xpath="(not(get-property('uri.var.email') = '' or (not(string(get-property('uri.var.email'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;email=',get-property('uri.var.email'))"/>
+            </then>
+        </filter>
 
-            mc.setPayloadJSON(jsonPayload);
-         ]]>
-        </script>
-
-        <!--<property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />-->
+        <filter xpath="(not(get-property('uri.var.unsubscribed') = '' or (not(string(get-property('uri.var.unsubscribed'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;unsubscribed=',get-property('uri.var.unsubscribed'))"/>
+            </then>
+        </filter>
 
         <call>
             <endpoint>
-         <!--       <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}&amp;email={uri.var.email}&amp;unsubscribed={uri.var.unsubscribed}" />-->
-                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}" />
+               <!-- <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}&amp;email={+uri.var.email}&amp;unsubscribed={+uri.var.unsubscribed}" />-->
+                <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}&amp;{+uri.var.optionalParameters}" />
+              <!--  <http method="get" uri-template="{uri.var.apiUrl}/lists/email/get.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;list={+uri.var.list}" />-->
 
             </endpoint>
         </call>

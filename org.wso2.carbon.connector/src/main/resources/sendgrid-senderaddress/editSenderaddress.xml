@@ -20,7 +20,7 @@
 
 <template name="editSenderaddress" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="identity" description="The Address you wish to edit." />
-    <parameter name="newIdentity" description="Specify the new name to be used for this Address." />
+    <parameter name="replyto" description="Specify the new name to be used for this Address." />
     <parameter name="name" description=" Specify the new name to be used for this Address." />
     <parameter name="email" description="Specify the email address to be used for this Address." />
     <parameter name="replyto" description="Specify an email address to be used in the Reply-To field. If not defined, will default to the email parameter." />
@@ -33,40 +33,40 @@
          <property name="uri.var.replyto" expression="$func:replyto" />
          <property name="uri.var.address" expression="$func:address" />
 
-        <script language="js">
-            <![CDATA[
-            var jsonPayload = mc.getPayloadJSON();
-            var newIdentity = mc.getProperty('uri.var.newIdentity');
-            var name = mc.getProperty('uri.var.name');
-            var replyto = mc.getProperty('uri.var.replyto');
-            var address = mc.getProperty('uri.var.address');
 
-            if (newIdentity != null && newIdentity != ""){
-               jsonPayload.client.newIdentity = newIdentity;
-            }
-             if (name != null && name != ""){
-               jsonPayload.client.name = name;
-            }
+        <filter xpath="(not(get-property('uri.var.newIdentity') = '' or (not(string(get-property('uri.var.newIdentity'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;newidentity=',get-property('uri.var.newIdentity'))"/>
+            </then>
+        </filter>
 
-             if (replyto != null && replyto != ""){
-               jsonPayload.client.replyto = replyto;
-            }
+        <filter xpath="(not(get-property('uri.var.name') = '' or (not(string(get-property('uri.var.name'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;name=',get-property('uri.var.name'))"/>
+            </then>
+        </filter>
 
-               if (address != null && address != ""){
-               jsonPayload.client.address = address;
-            }
+        <filter xpath="(not(get-property('uri.var.replyto') = '' or (not(string(get-property('uri.var.replyto'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;replyto=',get-property('uri.var.replyto'))"/>
+            </then>
+        </filter>
 
-            mc.setPayloadJSON(jsonPayload);
-         ]]>
-        </script>
 
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+        <filter xpath="(not(get-property('uri.var.address') = '' or (not(string(get-property('uri.var.address'))))))">
+            <then>
+                <property name="uri.var.optionalParameters"
+                          expression="fn:concat(get-property('uri.var.optionalParameters'),'&amp;address=',get-property('uri.var.address'))"/>
+            </then>
+        </filter>
+
 
         <call>
             <endpoint>
-                <http method="post" uri-template="{uri.var.apiUrl}/identity/edit.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}
-                &amp;identity={+uri.var.identity}&amp;newidentity={+uri.var.newIdentity}&amp;name={+uri.var.name}&amp;email={+uri.var.email}&amp;replyto={+uri.var.replyto}
-                &amp;address={+uri.var.address}" />
+                <http method="post" uri-template="{uri.var.apiUrl}/identity/edit.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;identity={+uri.var.identity}&amp;email={+uri.var.email}&amp;{+uri.var.optionalParameters}" />
             </endpoint>
 
             <!-- Remove custom Headers from the API Response -->

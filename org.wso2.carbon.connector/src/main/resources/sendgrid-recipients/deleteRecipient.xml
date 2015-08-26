@@ -25,8 +25,6 @@
         <property name="uri.var.name" expression="$func:name" />
         <property name="uri.var.list" expression="$func:list" />
 
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
-
         <call>
             <endpoint>
                 <http method="post" uri-template="{uri.var.apiUrl}/recipients/delete.json?api_user={+uri.var.apiUser}&amp;api_key={+uri.var.apiKey}&amp;name={+uri.var.name}&amp;list={+uri.var.list}" />

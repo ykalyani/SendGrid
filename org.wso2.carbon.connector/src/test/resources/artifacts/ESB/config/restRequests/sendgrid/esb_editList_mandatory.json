@@ -2,6 +2,6 @@
   "apiUrl" : "%s(apiUrl)",
   "apiUser" : "%s(apiUser)",
   "apiKey" : "%s(apiKey)",
-  "list":"%s(Elist)",
-  "newlist":"%s(NEWlist)"
+  "list":"%s(editListName)",
+  "newlist":"%s(editListNewName)"
 }
